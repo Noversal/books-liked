@@ -40,6 +40,7 @@ export function Filters () {
                     name="genre"
                     id={generoID}
                 >
+                    <option value={'all'}> Todos </option>
                     <option value="Fantasía">Fantasía</option>
                     <option value="Ciencia ficción">Ciencia ficción</option>
                     <option value="Zombies">Zombies</option>
