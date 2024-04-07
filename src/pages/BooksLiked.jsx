@@ -1,20 +1,13 @@
-import { useEffect, useState } from 'react'
-import { library } from '../mock/books.json'
+import { library as books } from '../mock/books.json'
 import { useLike } from '../hook/useLike'
 import Books from '../components/Books'
+import { useFilterBook } from '../hook/useFilterBook'
 
 export default function BooksLiked () {
-  const booksMock = library
-  const [booksLike, setBookLike] = useState([])
+  const { byId } = useFilterBook()
   const { likes } = useLike()
 
-  useEffect(() => {
-    const likedBook = booksMock.filter(({ book }) => {
-      return likes.includes(book.ISBN)
-    })
-    setBookLike(likedBook)
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [likes])
+  const booksLike = byId({books, likes})
 
   return (
     <>

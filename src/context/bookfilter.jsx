@@ -28,11 +28,19 @@ export function FilterBookProvider ({ children }) {
     return newBooks
   }
 
+  const byId  = ({ books, likes }) => {
+    const likedBook = books.filter(({ book }) => {
+      return likes.includes(book.ISBN)
+    })
+    return likedBook
+  }
+
   return (
       <FilterBookContext.Provider value={{
         filters,
         filtersChange,
-        filterAplied
+        filterAplied,
+        byId
       }}>
             {children}
         </FilterBookContext.Provider>
