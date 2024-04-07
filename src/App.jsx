@@ -11,8 +11,8 @@ function App () {
 <BrowserRouter>
       <Routes>
         <Route path='/' element={<BookLikeProvider><Layout/></BookLikeProvider>}>
-          <Route index element={<BookLikeProvider><FilterBookProvider><AllBooks /></FilterBookProvider></BookLikeProvider>} />
-          <Route path='/likes' element={<BookLikeProvider><BooksLiked/></BookLikeProvider>} />
+          <Route index element={<FilterBookProvider><AllBooks /></FilterBookProvider>} />
+          <Route path='/likes' element={<BooksLiked/>} />
         </Route>
   </Routes>
 </BrowserRouter>
