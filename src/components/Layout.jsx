@@ -1,20 +1,16 @@
-import { NavLink, Outlet } from 'react-router-dom'
-import { useLike } from '../hook/useLike'
+import { Outlet } from 'react-router-dom'
+import { FilterBookProvider } from '../context/bookfilter'
+import NavBar from './NavBar'
+import { BookLikeProvider } from '../context/bookLike'
 
 export default function Layout () {
-  const { likes } = useLike()
   
   return (
-    <>
-      <div className='flex gap-4 pb-3'>
-        <NavLink className={({ isActive }) => {
-          return isActive ? 'bg-white p-2 rounded' : 'p-2'
-        }} to='/'>Home</NavLink>
-          <NavLink className={({ isActive }) => {
-            return isActive ? 'bg-white p-2 rounded' : 'p-2'
-          }} to='/likes'>Likes {likes.length}</NavLink>
-      </div>
-        <Outlet/>
-    </>
+      <BookLikeProvider>
+        <NavBar />
+        <FilterBookProvider>
+          <Outlet/>
+        </FilterBookProvider>
+      </BookLikeProvider>
   )
 }
